@@ -1,28 +1,27 @@
 ## out of scope path
 * out_of_scope
-  - utter_out_of_scope
+    - utter_out_of_scope
 
 ## help
 * help
-  - utter_help
+    - utter_help
 
 ## thank
 * thank
-  - utter_welcome
+    - utter_welcome
 
 ## happy path
 * greet
-  - utter_greet
-  - utter_help
+    - utter_greet
+    - utter_help
 
 ## say goodbye
 * goodbye
-  - utter_goodbye
+    - utter_goodbye
 
 ## bot challenge
 * bot_challenge
-  - utter_iamabot
-
+    - utter_iamabot
 
 ## incident form
 * open_incident OR password_reset OR problem_email
@@ -59,5 +58,15 @@
     - form{"name":"open_incident_form"}
 * incident_status
     - action_incident_status
+    - open_incident_form
+    - form{"name":null}
+
+## explain priority
+* open_incident OR password_reset OR problem_email
+    - open_incident_form
+    - form{"name":"open_incident_form"}
+    - slot{"requested_slot": "priority"}
+* explain
+    - utter_explain_priority
     - open_incident_form
     - form{"name":null}
