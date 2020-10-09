@@ -88,6 +88,8 @@ class SnowAPI:
         session = await self.open_session()
         async with session.get(url) as resp:
             if resp.status != 200:
+                if resp.status == 401:
+                    return {"error": "It seems we are unable to connect to ServiceNow, try again later."}
                 return {"error": "Unable to get recent incidents"}
 
             resp_json = await resp.json()
@@ -125,8 +127,11 @@ class SnowAPI:
                     resp.status,
                     resp_json
                 )
+                if resp.status == 401:
+                    return {"error": "It seems we are unable to connect to ServiceNow, try again later."}
                 return {"error": "Unable to create incident"}
             resp_json = await resp.json()
+
             return resp_json.get("result", {})
 
     @staticmethod

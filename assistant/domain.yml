@@ -31,6 +31,8 @@ slots:
     type: unfeaturized
   user_name:
     type: unfeaturized
+  user_email:
+    type: unfeaturized
 
 responses:
   utter_out_of_scope:
@@ -70,7 +72,8 @@ responses:
   utter_ask_confirm:
   - text: "Should I open an incident with the following details?
           \n    Title: {incident_title}
-          \n    Description: {problem_description}          
+          \n    User e-mail: {user_email}
+          \n    Description: {problem_description}
           \n    Priority: {priority}"
     buttons:
     - title: Yes
